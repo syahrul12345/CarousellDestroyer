@@ -1,0 +1,12 @@
+#loginPane {
+    -fx-border-style: solid;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-padding: 5;
+}
+#infoPane {
+    -fx-border-style: solid;
+    -fx-border-width: 1;
+    -fx-border-color: black;
+    -fx-padding: 5;
+}

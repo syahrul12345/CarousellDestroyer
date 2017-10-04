@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="Controller.MainController"
+            prefHeight="400.0" prefWidth="600.0"
+            stylesheets="/CSS/mainmenu.css">
+    <VBox>
+        <VBox spacing="5">
+            <GridPane fx:id = "loginPane">
+                <Label text="Username"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="0"/>
+                <TextField fx:id ="userField"
+                           GridPane.rowIndex="0"
+                           GridPane.columnIndex="1"/>
+                <Label text="Password"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="0"/>
+                <PasswordField fx:id ="passField"
+                               GridPane.rowIndex="1"
+                               GridPane.columnIndex="1"/>
+                <Button fx:id = "testBtn"
+                        text="Test"
+                        onAction="#testLogin"
+                        GridPane.rowIndex="2"
+                        GridPane.columnIndex="1"/>
+            </GridPane>
+
+        </VBox>
+        <GridPane fx:id = "infoPane">
+            <Label text="Item Name: "
+                   GridPane.rowIndex="0"
+                   GridPane.columnIndex="0"/>
+            <TextField fx:id ="itemNameField"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="1"/>
+            <Label text="Price: "
+                   GridPane.rowIndex="1"
+                   GridPane.columnIndex="0"/>
+            <TextField fx:id ="priceField"
+                       GridPane.rowIndex="1"
+                       GridPane.columnIndex="1"/>
+            <Label text="Category: "
+                   GridPane.rowIndex="2"
+                   GridPane.columnIndex="0"/>
+            <ComboBox fx:id ="menuList"
+                          GridPane.rowIndex="2"
+                          GridPane.columnIndex="1" >
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value ="Motorcycle"/>
+                        <String fx:value="Car"/>
+                        <String fx:value="Train"/>
+                    </FXCollections>
+
+                </items>
+            </ComboBox>
+
+
+            <Label text="Description: "
+                   GridPane.rowIndex="3"
+                   GridPane.columnIndex="0"/>
+            <TextArea fx:id ="descriptionArea"
+                      GridPane.rowIndex="3"
+                      GridPane.columnIndex="1"/>
+            <Label text="Image: "
+                   GridPane.rowIndex="4"
+                   GridPane.columnIndex="0"/>
+            <Button fx:id ="imageButton"
+                    text ="Upload Image"
+                    GridPane.rowIndex="4"
+                    GridPane.columnIndex="1"/>
+            <Text text = "Delivery Options: "
+                  GridPane.rowIndex="5"
+                  GridPane.columnIndex="0"/>
+
+            <GridPane fx:id ="deliveryOptionPane"
+                      GridPane.rowIndex="5"
+                      GridPane.columnIndex="1">
+                <Text text = "Delivery"
+                      GridPane.rowIndex="0"
+                      GridPane.columnIndex="0" />
+                <RadioButton fx:id="deliveryBtn"
+                             GridPane.columnIndex="1"/>
+                <Text text = "Meetup"
+                      GridPane.rowIndex="0"
+                      GridPane.columnIndex="2" />
+                <RadioButton fx:id="meetupBtn"
+                             GridPane.columnIndex="3"/>
+
+
+            </GridPane>
+            <Button fx:id="sellBtn"
+                    text="SELL"
+                    GridPane.rowIndex="6"
+                    GridPane.columnIndex = "1" />
+
+
+
+        </GridPane>
+        <TextArea fx:id ="console"
+                  editable="false"
+                  minWidth="658"
+                  maxWidth="100" />
+
+    </VBox>
+
+
+
+
+</AnchorPane>
