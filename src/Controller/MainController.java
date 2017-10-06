@@ -23,13 +23,17 @@ public class MainController {
     @FXML
     private TextArea console;
     private ExecutorService executorService = Executors.newFixedThreadPool(2);
-    private LoginObserver loginObserver = new LoginObserver();
-    private LoginModel loginModel = new LoginModel(null);
+    private LoginObserver loginObserver;
+    private LoginModel loginModel;
 
     public void testLogin(ActionEvent actionEvent) throws InterruptedException, ExecutionException {
+        String login = userField.getText();
+        String password = passField.getText();
         console.appendText("Attempting login...." +"\n");
+        loginModel = new LoginModel(null,login,password);
+        loginObserver = new LoginObserver();
         loginModel.addObserver(loginObserver);
-
+        Future future = executorService.submit(loginModel);
 
     }
     class LoginObserver implements Observer {
