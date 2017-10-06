@@ -10,5 +10,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="client-combined-3.6.0" level="project" />
     <orderEntry type="library" name="byte-buddy-1.7.5" level="project" />
+    <orderEntry type="library" name="htmlunit-driver-2.27-with-dependencies" level="project" />
   </component>
 </module>
