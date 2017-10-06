@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 
@@ -26,7 +27,7 @@ public class MainController {
     public void testLogin(ActionEvent actionEvent) throws InterruptedException {
         String username = userField.getText();
         String password = passField.getText();
-
+        
 
 
     }
