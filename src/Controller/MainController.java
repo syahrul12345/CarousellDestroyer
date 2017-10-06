@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.util.Arrays;
@@ -19,11 +20,13 @@ public class MainController {
     private PasswordField passField;
     @FXML
     private ComboBox menuList;
+    @FXML
+    private TextArea console;
 
-
-    public void testLogin(ActionEvent actionEvent) {
-        String userName = userField.getText();
+    public void testLogin(ActionEvent actionEvent) throws InterruptedException {
+        String username = userField.getText();
         String password = passField.getText();
+
 
 
     }
