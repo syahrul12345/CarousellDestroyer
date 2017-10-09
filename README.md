@@ -2,15 +2,13 @@ CarousellBot
 
 CarousellBot allows you to automate the selling process in carousell without opening sg.carousell.com or the app. The bot periodically checks for your listing at a regular interval, and if your listing is not in the first page, it will automatically post the exact same listing. This can be done indefinately.
 
-FEATURES:
+Installation:
 
-Autopost of listing on carousell with one click
-Check if the first page of products for your listing name contains any of your listings, and if not it will autopost a new listing
-Can do this for an indefinate number of times
-Amazing for those who sell items who are constantly being removed due to report abuse.
-Future updates:
+1) You can clone this repository and compile it yourself
+2) Go to releases and download the exported JAR file
 
-Mass account creator
-Mass liker
-Report ur competitors so their listings will be removed
-Proxy capability
+Features:
+1) Implemented the anti-captcha API to pull requests from the carousell server
+2) Directly send login information/listing information in JSON to carousell servers without the need of a GUI browser or headless browser. Consequently this has made logging in/selling products extremely fast
+3) All information is directly processed in JSON when requests are received and sent back to carousell servers in text format, allowing enhanced performance
+
