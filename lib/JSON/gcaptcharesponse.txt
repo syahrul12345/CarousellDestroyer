@@ -1,0 +1,35 @@
+Captcha:
+Referrer: https://www.google.com/recaptcha/api2/bframe?hl=en&v=r20171003155951&k=6Lc-KiYTAAAAAGkGKh1LNFmCAlEGvhABCl4o56SE
+
+)]}'
+["uvresp","03AJzQf7Oz4PEeZdfeqp50Lgc_BXwPfc1ffcqp2vg0BblB3PlVn3dm6TlOvXXTMnznUx1vAlpQPrA9-ep8mDEWNuchIhZTvdQzdl7SjDrUNhyRaOzpiVsuLr1A9F5VmFzwqMLDCrW9dJNp2Sy4qJ7RrPqcIwRJ0T4yINNHy7ecUTWSmETLkJpUB5Cv8U2L6G58bov9vLTilHr-b-M1YcL0gBZW40LnKDQ9LrY9WbLAdX9NBFXR3t93A1soi4yBkr0lWM_PbSpaE9lNvAa8o8CQdvD3Fn-kl4QJM2vAKxNOBiTCbngscCoYKt-0kYTC0keGmpJcu58-fLEvZYBjG2rMZy-P7kZngySXqQ",1,120]
+
+Working example
+
+1) Site key: 6Lc-KiYTAAAAAGkGKh1LNFmCAlEGvhABCl4o56SE
+    a) Set in anti-captcha method
+
+
+2) Using antacaptcha, request https://www.google.com/recaptcha/api2/userverify?k=6Lc-KiYTAAAAAGkGKh1LNFmCAlEGvhABCl4o56SE for captcha response
+    a) Run anti-captcha, get the HASH KEY for the answer
+
+3) Send Model.JSON.JSON object with use password to this : https://sg.carousell.com/ui/iso?_csrf=D0mgKaVh-cQJ-xzVbzxBqtECMGoX3rfu3K3M
+    a) QUERY STRING IS D0mgKaVh-cQJ-xzVbzxBqtECMGoX3rfu3K3M
+    a) Create a Model.JSON.JSON object ,with quesry string, username,password and HASHKEY
+    c) Example of Model.JSON.JSON:
+
+    requests	{…}
+    g0	{…}
+    resource	login
+    operation	create
+    params	{…}
+    username	singaporesneakers
+    password	hahaz123
+    captchaToken	03AJzQf7NXp10gtPZSF2A0-pFJ8opG…AxwxkDGEivGNomlWgA9EqLit1nNbg
+    body	{}
+    context	{…}
+    _csrf	y7HqiaZ9-LvjRCN7_gHKVn_kpPo9OMoXuHdA
+
+
+
+

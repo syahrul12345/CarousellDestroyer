@@ -1,10 +1,10 @@
 package Model;
 
+import Model.JSON.JSONCreate;
+import Model.JSON.JSONmain;
 import com.anti_captcha.Api.ImageToText;
 import com.anti_captcha.Api.NoCaptchaProxyless;
 import com.anti_captcha.Helper.DebugHelper;
-import org.openqa.selenium.By;
-import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -16,11 +16,11 @@ public class LoginModel extends Observable implements Callable {
     private String user;
     private String password;
 
+
     public LoginModel(Boolean loginFlag, String user, String password) {
         this.loginFlag = loginFlag;
         this.user = user;
         this.password = password;
-
     }
 
 
@@ -28,26 +28,20 @@ public class LoginModel extends Observable implements Callable {
     @Override
     public Object call() throws Exception {
         //fills up the login info
+        //gets the soln
 
-        HtmlUnitDriver htmlUnitDriver = new HtmlUnitDriver();
-        htmlUnitDriver.get("https://sg.carousell.com/login/");
-        htmlUnitDriver.findElement(By.xpath("//*[@id=\"username\"]")).sendKeys(user);
-        htmlUnitDriver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys(password);
+        // how to get the query string????
+        String solution = AntiCaptcha();
+        JSONCreate jsonCreate = new JSONCreate(user,password,solution);
+        JSONmain jsonMain = jsonCreate.getJsonMain();
+        //send jsonMain
 
-        AntiCaptcha();
-        GetBalance();
-
-        if(htmlUnitDriver.getTitle().contains("Login")) {
-            loginFlag = true;
-        } else {
-            loginFlag = false;
-        }
         setChanged();
         notifyObservers();
         return loginFlag;
     }
     //solves the captcha and returns the hash
-    private void AntiCaptcha() throws InterruptedException, MalformedURLException {
+    private String AntiCaptcha() throws InterruptedException, MalformedURLException {
         DebugHelper.setVerboseMode(true);
         NoCaptchaProxyless api = new NoCaptchaProxyless();
         api.setClientKey("be43df9db92c4a3c381683be8db91e26");
@@ -63,7 +57,9 @@ public class LoginModel extends Observable implements Callable {
             DebugHelper.out("Could not solve the captcha.", DebugHelper.Type.ERROR);
         } else {
             DebugHelper.out("Result: " + api.getTaskSolution(), DebugHelper.Type.SUCCESS);
+            return api.getTaskSolution();
         }
+        return null;
     }
     private void GetBalance()
     {

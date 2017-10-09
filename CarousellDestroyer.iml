@@ -12,5 +12,6 @@
     <orderEntry type="library" name="byte-buddy-1.7.5" level="project" />
     <orderEntry type="library" name="htmlunit-driver-2.27-with-dependencies" level="project" />
     <orderEntry type="library" name="anticaptcha" level="project" />
+    <orderEntry type="library" name="gson-2.6.2" level="project" />
   </component>
 </module>

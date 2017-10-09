@@ -54,7 +54,7 @@ Important note:
 
   `java -jar selenium-server-standalone-3.5.2.jar -enablePassThrough false`
 
-* Avoid encoding numbers as floats rather then longs in JSON payloads.
+* Avoid encoding numbers as floats rather then longs in Model.JSON.JSON payloads.
 * New "pass through" mode supports file uploads again.
 * Added support for querying running sessions via the
   "/wd/hub/sessions" endpoint
@@ -112,7 +112,7 @@ Important note:
 * Attempt to kill processes before draining input, error, and output
   streams. This should reduce apparent hanging when closing Firefox in
   particular.
-* Grid will make use of W3C capabilities in prefernce to the JSON Wire
+* Grid will make use of W3C capabilities in prefernce to the Model.JSON.JSON Wire
   Protocol ones.
 * Fixing boolean command line arguments (#3877)
 
@@ -687,15 +687,15 @@ Other notable changes:
   chromedriver
 * Implement lazy loopback detection. This provides ~10x speed
   improvement of selenium server startup.
-* Allow loading option descriptions from JSON file instead of
+* Allow loading option descriptions from Model.JSON.JSON file instead of
   Properties, allowing the server to manage order of options in the
   help message
 * SafariDriver: In SafariDriver's page script, copy window properties
   to goog.global. (provided by juangj@google.com)
-* Add a method toList that allows converting CompositeAction to JSON
+* Add a method toList that allows converting CompositeAction to Model.JSON.JSON
 * FirefoxDriver: Skip the profile cleaning step when launching Firefox
 * Implement both integer (legacy) and string (standard) response status
-  for the JSON wire protocol
+  for the Model.JSON.JSON wire protocol
 * FirefoxDriver: Disable https://wiki.mozilla.org/Advocacy/heartbeat
   Firefox 37+ feature in browser sessions started by FirefoxDriver.
 * FirefoxDriver: Added getters to FirefoxProfile to allow reading
@@ -709,7 +709,7 @@ Other notable changes:
   Fixes Google Code issue 4734. (Provided by Richard Atkins)
 * FirefoxDriver and Java language bindings now handle both legacy and
   W3C specification dialects of element reference serialization in the
-  JSON wire protocol.
+  Model.JSON.JSON wire protocol.
 * FirefoxDriver:  Don't force garbage collection in httpd.js for
   Firefox when connections are closed
 
@@ -868,7 +868,7 @@ WebDriver:
   * Add explicit API for configuring log prefs rather than forcing users to rely on
     magic capability strings.
   * Clean up internal Firefox logging API.
-  * Use LogLevelMapping to convert JSON wire protocol name to Level instance.
+  * Use LogLevelMapping to convert Model.JSON.JSON wire protocol name to Level instance.
   * Make the jettyMaxThreads parameter actually be effective
   * Fix NullPointerException when File#listFiles() returns null. Fixes issue #1934
   * Making WDBS.start command a no-op if it was instantiated with an already started driver. Fixes issue 3993
@@ -892,10 +892,10 @@ WebDriver:
      * Added a session ID member to the webdriver::Command object.
      * Modified the webdriver::Command object to no longer draw distinction
        between parameters passed in as part of the URL substitution and those
-       passed in as part of the JSON payload in the body.
+       passed in as part of the Model.JSON.JSON payload in the body.
      * Modified webdriver::CommandHandler::ExecuteInternal (and all subclass
        implementations to use a single parameters map instead of the dual
-       URL tokens/JSON payload parameters maps used previously.
+       URL tokens/Model.JSON.JSON payload parameters maps used previously.
   * Propagate webdriver_firefox_port preference to FirefoxDriver, was being ignored. Fixes issue 5172
   * Adding a new selenium server option -logLongForm to log more details to the console. Fixes issue 6645
   * Handling possible IllegalStateException while cleaning orphaned and timed out sessions. Fixes issue 6771
@@ -974,7 +974,7 @@ WebDriver:
   * Test if we need to skip cookie tests for lack of a valid domain name before calling a method that asserts we have a valid domain name.
   * Convert HttpRequest/Response to POJOs; handle all conversion to and from HttpServletRequest/Response inside DriverServlet.
   * Every command handler returns ResultType.SUCCESS and those handlers that return an actual value do so through a level of indirection. This commit changes command handlers to just return results directly to the caller, making it possible to delete a lot of unnecessary code.
-  * Move static resource serving code into DriverServlet. It is not part of the JSON wire protocol and including it in the command dispatcher complicates planned refactoring and other code cleanup.
+  * Move static resource serving code into DriverServlet. It is not part of the Model.JSON.JSON wire protocol and including it in the command dispatcher complicates planned refactoring and other code cleanup.
   * Mobile - Network Connection implementation for Java and Python.
   * ChromeDriver 2.10.267517 binds to the loopback address instead of 0.0.0.0, so only attempt to connect using the loopback address.
   * Code comment changes for wait()
@@ -1043,7 +1043,7 @@ WebDriver:
  * Removed use of VK_ENTER since its been removed from Firefox. PUA
    code uses VK_RETURN now like Mozilla Tools.
  * Added switch to parent frame command to the wire protocol and API.
- * Added httpOnly flag to Cookie JSON object.
+ * Added httpOnly flag to Cookie Model.JSON.JSON object.
  * (on behalf of Tobias Lidskog): Added property for silencing
    chromedriver. The Java property "webdriver.chrome.silentOutput" is
    now used to set the default value for silent mode in chromedriver
@@ -1089,7 +1089,7 @@ Grid:
    overlooked in a previous cleanup.
 
 RC:
- * Added lost quotes in JSON format (RC).
+ * Added lost quotes in Model.JSON.JSON format (RC).
  * Removed old version of Selenium RC emulation and leaving the new one
    in place.
 
@@ -1258,7 +1258,7 @@ WebDriver JS:
     determine if an environment supports stack traces. This avoids
     unnecessarily triggering debuggers configured to halt when an error
     is thrown.
-  * FIXED: 6627: Safely rebuild chrome.Options from a partial JSON spec.
+  * FIXED: 6627: Safely rebuild chrome.Options from a partial Model.JSON.JSON spec.
 
 Grid:
   * FIXED: 6357: Added PhantomJS icon to the grid console.
@@ -1271,7 +1271,7 @@ RC:
   * FIXED: 2508: Fixed screenshot size calculation for quirks mode (RC)
   * FIXED: 2845: Moved storedVars from test case level to test suite
     level.
-  * FIXED: 3185: Fixed JSON converter (RC).
+  * FIXED: 3185: Fixed Model.JSON.JSON converter (RC).
   * FIXED: 3270: Fixed switch to window by var= locator (RC).
   * FIXED: 5103: Fixed screenshooter in Firefox and Selenium RC,
     limiting the size of the screenshot to pevent failures.
@@ -1412,7 +1412,7 @@ WebDriver JS:
 Grid:
   * Update grid for change in behavior of WebDriver's new session
     command.
-  * Fixed handling of JSON conversion errors at node.
+  * Fixed handling of Model.JSON.JSON conversion errors at node.
   * FIXED: 5942: Fix hang of hub when node machine is not available.
 
 RC:
@@ -1640,7 +1640,7 @@ WebDriver:
     elements.
   * FIXED: 2035: Returning a simple result (null) after opening a new
     window instead of the window object (that can't be serialized to
-    JSON).
+    Model.JSON.JSON).
   * FIXED: 2353: Only call blur() for IE if the element is not the
     <body> element.
   * FIXED: 3043: Better error message reporting when browser launch
@@ -2121,7 +2121,7 @@ WebDriver:
   * Added a front-end for executing WebDriverJS scripts. Point a
     browser at http://localhost:4444/wd/hub.
   * Can now query an Android driver for supported capabilities.
-  * Updated JSON framework used in the iOS driver.
+  * Updated Model.JSON.JSON framework used in the iOS driver.
   * Fixed issue with scrolling on small viewports with native events
     in Firefox.
   * FIXED: 2889: FluentWait supports adding a custom message to
